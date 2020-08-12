@@ -25,6 +25,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Racks CORS management
 gem 'rack-cors'
 
+# Active model serializer for JSON responses
+gem 'fast_jsonapi'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
