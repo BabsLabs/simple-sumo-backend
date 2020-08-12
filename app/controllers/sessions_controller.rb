@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(session_params[:password])
       login!
-      render json: { logged_in: true, user: @user }
+      @serialized_user = UserSerializer.new(@user)
+      render json: { logged_in: true, user: @serialized_user }
     else
       render json: { status: 401, errors: ['verify credentials and try again or sign up'] }
     end
@@ -13,7 +14,8 @@ class SessionsController < ApplicationController
   
   def is_logged_in?
     if logged_in? && current_user
-      render json: { logged_in: true, user: current_user }
+      serialized_user = UserSerializer.new(current_user)
+      render json: { logged_in: true, user: serialized_user }
     else
       render json: { logged_in: false, message: 'no such user' }
     end

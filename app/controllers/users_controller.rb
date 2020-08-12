@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render json: { user: @user }
+      @serialized_user = UserSerializer.new(@user)
+      render json: { user: @serialized_user }
     else
       render json: { errors: ['user not found'] , status: 500 }
     end
@@ -13,7 +14,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!
-      render json: { status: :created, user: @user }
+      @serialized_user = UserSerializer.new(@user)
+      render json: { status: :created, user: @serialized_user }
     else
       render json: { status: 500, errors: @user.errors.full_messages }
     end
