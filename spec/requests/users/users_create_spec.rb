@@ -55,8 +55,8 @@ describe 'POST /users endpoint' do
   it 'returns an error message if no username is given' do
     post '/users', params: no_username_params
 
-    expect(response).to_not be_successful
-    expect(response).to have_http_status 400
+    expect(response).to be_successful
+    expect(response).to have_http_status 200
 
     parsed_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -68,8 +68,8 @@ describe 'POST /users endpoint' do
   it 'returns an error message if no email is given' do
     post '/users', params: no_email_params
 
-    expect(response).to_not be_successful
-    expect(response).to have_http_status 400
+    expect(response).to be_successful
+    expect(response).to have_http_status 200
 
     parsed_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -81,8 +81,8 @@ describe 'POST /users endpoint' do
   it 'returns an error message if no password is given' do
     post '/users', params: no_password_params
 
-    expect(response).to_not be_successful
-    expect(response).to have_http_status 400
+    expect(response).to be_successful
+    expect(response).to have_http_status 200
 
     parsed_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -94,8 +94,8 @@ describe 'POST /users endpoint' do
   it 'returns an error message if a passwords do not match or confirmation is missing' do
     post '/users', params: bad_password_params
 
-    expect(response).to_not be_successful
-    expect(response).to have_http_status 400
+    expect(response).to be_successful
+    expect(response).to have_http_status 200
 
     parsed_response = JSON.parse(response.body, symbolize_names: true)
 
@@ -107,8 +107,8 @@ describe 'POST /users endpoint' do
   it 'returns an error message if a bad email is given' do
     post '/users', params: bad_email_params
 
-    expect(response).to_not be_successful
-    expect(response).to have_http_status 400
+    expect(response).to be_successful
+    expect(response).to have_http_status 200
 
     parsed_response = JSON.parse(response.body, symbolize_names: true)
 
