@@ -11,9 +11,8 @@ class UsersController < ApplicationController
       end
     rescue ActiveRecord::RecordNotFound  
       render  status: 404, json: { errors: ['user not found'] }
-    return
-end
-
+      return
+    end
   end
 
   def create
@@ -23,7 +22,7 @@ end
       @serialized_user = UserSerializer.new(@user)
       render status: 201, json: { user: @serialized_user }
     else
-      render status: 400, json: { errors: @user.errors.full_messages }
+      render json: { errors: @user.errors.full_messages }
     end
   end
 

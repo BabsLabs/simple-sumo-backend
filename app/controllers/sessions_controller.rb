@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @serialized_user = UserSerializer.new(@user)
       render json: { logged_in: true, user: @serialized_user }
     else
-      render status: 401, json: {  errors: ['verify credentials and try again or sign up'] }
+      render status: 200, json: {  errors: ['verify credentials and try again or sign up'] }
     end
   end
   
