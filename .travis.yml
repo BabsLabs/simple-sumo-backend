@@ -1,7 +1,12 @@
+before_script:
+  - psql -c 'create database simple_sumo_backend_test;' -U postgres
+
 language: ruby
 rvm:
   - 2.7.1
+  
 before_install:
   - gem install bundler
-before_script:
-  - psql -c 'create database simple_sumo_backend_test;' -U postgres
+
+services:
+ - postgresql
