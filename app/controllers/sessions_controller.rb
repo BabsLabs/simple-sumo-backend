@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @serialized_user = UserSerializer.new(@user)
       render json: { logged_in: true, user: @serialized_user }
     else
-      render json: { status: 401, errors: ['verify credentials and try again or sign up'] }
+      render status: 401, json: {  errors: ['verify credentials and try again or sign up'] }
     end
   end
   
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    render json: { status: 200, logged_out: true }
+    render status: 200, json: { logged_out: true }
   end
 
   private
