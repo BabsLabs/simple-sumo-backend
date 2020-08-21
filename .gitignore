@@ -37,3 +37,6 @@ yarn-debug.log*
 
 # Ignore VScode specific settings
 .vscode
+
+# Ignore redis dump file
+dump.rdb
