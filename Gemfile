@@ -28,6 +28,9 @@ gem 'rack-cors'
 # Active model serializer for JSON responses
 gem 'fast_jsonapi'
 
+# Active Job adapter that has a persistent backend
+gem 'sidekiq'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
