@@ -26,10 +26,7 @@ describe 'POST /users endpoint' do
   end
 
   it 'can respond to a POST request with valid params' do
-    user_1 = User.create!(username: 'testUser_1', 
-                        email: 'test_1@test1.com',
-                        password: 'password_1',
-                        password_confirmation: 'password_1')
+    user_1 = create(:user)
 
     expect(User.count).to eq 1
 
