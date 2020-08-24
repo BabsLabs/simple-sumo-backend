@@ -19,13 +19,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!
+
+      email_info = { user: @user }
+      UserRegistrationEmailJob.perform_later(email_info)
+      
       @serialized_user = UserSerializer.new(@user)
-       # `recipient` is the email address that should be receiving the message
-      recipient = @user.email
-      # `email_info` is the information that we want to include in the email message.
-      email_info = { user: @user
-                 }
-      UserNotifierMailer.inform_registration(email_info, recipient).deliver_now
  
       render status: 201, json: { user: @serialized_user }
     else
