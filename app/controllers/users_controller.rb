@@ -19,12 +19,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!
-
-      email_info = { user: @user }
-      UserRegistrationEmailJob.perform_later(email_info)
-      
+      UserRegistrationEmailJob.perform_later(@user.id)
       @serialized_user = UserSerializer.new(@user)
- 
       render status: 201, json: { user: @serialized_user }
     else
       render json: { errors: @user.errors.full_messages }
