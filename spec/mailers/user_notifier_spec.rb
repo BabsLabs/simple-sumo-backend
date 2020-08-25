@@ -6,8 +6,7 @@ describe UserNotifierMailer, type: :mailer do
     html_email_fixture = file_fixture("inform_registration_fixture.html.erb").read
 
     user = create(:user, username: 'TestUsername')
-    email_info = { user: user }
-    email = UserNotifierMailer.inform_registration(email_info)
+    email = UserNotifierMailer.with(user: user).inform_registration
 
     email.deliver_now
 
