@@ -66,6 +66,19 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  # Enable :smtp for ActionMailer delivery
+  config.action_mailer.delivery_method = :smtp
+
+  # SMTP gmail settings
+  config.action_mailer.smtp_settings = {
+    :address => ENV['SMTP_hostname'],
+    :port => 587,
+    :domain => ENV['domain'],
+    :user_name => ENV['mail_username'],
+    :password => ENV['mail_password'],
+    :authentication => 'plain'
+  }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true

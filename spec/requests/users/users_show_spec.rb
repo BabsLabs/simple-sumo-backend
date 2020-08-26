@@ -2,10 +2,7 @@ require 'rails_helper'
 
 describe 'GET /users/:id endpoint' do
   it 'can respond to a GET request for a single user by user id' do
-    user = User.create!(username: 'testUser', 
-                        email: 'test@test.com',
-                        password: 'password',
-                        password_confirmation: 'password')
+    user = create(:user)
 
     get "/users/#{user.id}"
 
