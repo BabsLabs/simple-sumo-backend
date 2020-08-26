@@ -1,1 +1,1 @@
-Uuserregistrationemailjob: bundle exec sidekiq -c 2
+userregistrationemailjob: bundle exec sidekiq -c 2
