@@ -1,3 +1,4 @@
-Hello <%=@user.username%>!
-
-Thank you for registering with Simple Sumo!
+<h2>Hello <%=@user.username%>!</h2>
+    <h1>Thank you for registering with Simple Sumo!</h1>
+    <%= link_to "Please click this link to verify your account!", "http://babslabs-simple-sumo.herokuapp.com/users/#{@user.confirm_token}/confirm_email" %>
+    <p>GOOD LUCK IN THE RING!</p>
