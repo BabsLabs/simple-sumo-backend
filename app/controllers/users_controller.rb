@@ -29,15 +29,16 @@ class UsersController < ApplicationController
 
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
-    if user
+    if user && !user.email_confirmed
       user.verify_user
       redirect_to("http://babslabs-simple-sumo.herokuapp.com/login")
+    elsif user && user.email_confirmed
+      redirect_to("http://babslabs-simple-sumo.herokuapp.com/already_registered")
     end
   end
 
   def email_activate
     self.email_confirmed = true
-    self.confirm_token = nil
     save!(:validate => false)
   end
 
