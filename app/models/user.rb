@@ -13,14 +13,13 @@ class User < ApplicationRecord
 
   def verify_user
     self.email_confirmed = true
-    self.confirm_token = nil
     save!(:validate => false)
   end
 
   private
 
     def confirmation_token
-      self.confirm_token = SecureRandom.urlsafe_base64.to_s if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.uuid.gsub("-", "").hex.to_s if self.confirm_token.blank?
     end   
 
 end
