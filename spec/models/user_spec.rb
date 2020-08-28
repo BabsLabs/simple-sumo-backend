@@ -12,4 +12,32 @@ describe User, type: :model do
     it { should validate_confirmation_of :password }
   end
   
+  describe 'class methods' do
+    it 'can verify users email' do
+      user = create(:user)
+
+      expect(user.email_confirmed).to eq(false)
+
+      user.verify_user
+
+      expect(user.email_confirmed).to eq(true)
+    end
+
+    it 'before_create action generates a users confirm_token' do
+      user = build(:user)
+
+      expect(user.confirm_token).to eq(nil)
+
+      user.save
+
+      expect(user.confirm_token.class).to eq(String)
+      expect(user.confirm_token.class).to_not be_blank
+    end
+
+    it 'email_confirmed is set to false upon user creation' do
+      user = create(:user)
+
+      expect(user.email_confirmed).to eq(false)
+    end
+  end
 end
