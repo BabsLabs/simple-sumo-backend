@@ -43,6 +43,9 @@ gem 'sinatra'
 # Securely configure Rails applications Env vars
 gem "figaro"
 
+# Handle SameSite=None directive on all cookies
+# gem 'rails_same_site_cookie'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
