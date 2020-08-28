@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'POST /users endpoint' do
   let(:user_params) do
-    {user: { username: 'GoodTestUsername', email: 'GoodTestUsername@test.com', password: 'test_password', password_confirmation: 'test_password',  }}
+    {user: { username: 'GoodTestUsername', email: 'GoodTestUsername@test.com', password: 'test_password', password_confirmation: 'test_password' }}
   end
 
   let(:no_username_params) do
