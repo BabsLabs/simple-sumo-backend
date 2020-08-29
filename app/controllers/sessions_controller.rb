@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(session_params[:password])
       login!
       @serialized_user = UserSerializer.new(@user)
+      response.set_cookie(same_site: :none, secure: true)
       render json: { logged_in: true, user: @serialized_user }
     else
       render status: 200, json: {  errors: ['verify credentials and try again or sign up'] }
