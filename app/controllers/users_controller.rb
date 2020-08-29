@@ -29,12 +29,12 @@ class UsersController < ApplicationController
 
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
+    url = "https://babslabs-simple-sumo.herokuapp.com/login"
     if user && !user.email_confirmed
       user.verify_user
-      url = "https://babslabs-simple-sumo.herokuapp.com/login"
-      redirect_to("?verified=successful")
+      redirect_to("#{url}?verified=successful")
     elsif user && user.email_confirmed
-      redirect_to("?verified=already_verified")
+      redirect_to("#{url}?verified=already_verified")
     end
   end
 
