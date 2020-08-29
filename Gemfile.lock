@@ -260,6 +260,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 4.1)
+  rack (~> 2.2, >= 2.2.3)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.2)
   rails_same_site_cookie
